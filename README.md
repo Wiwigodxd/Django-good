@@ -1,0 +1,2 @@
+# Django good
+Proyecto insano
