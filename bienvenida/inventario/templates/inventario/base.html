@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-        {% block title %}
-
-        {% endblock %} 
+      {% block title %}
+        Inventario
+      {% endblock %}
     </title>
-</head>
-<body>
-    {% block header %}
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
 
-    {% endblock %}
+  <body class="bg-gray-100 text-gray-800">
+    <nav class="bg-blue-600 p-4 text-white">
+      <a href="{% url 'lista_productos' %}" class="font-bold">Inventario</a>
+    </nav>
+    <div class="container mx-auto p-4">
+      {% block content %}
 
-    {% block main %}
-
-    {% endblock %}
-
-    {%block footer %}
-
-    {% endblock %}
-</body>
+      {% endblock %}
+    </div>
+  </body>
 </html>
