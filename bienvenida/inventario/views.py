@@ -1,6 +1,11 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
+from .models import Ventas
 from .forms import ProductoForm
+from .forms import VentasForm
+def lista_ventas(request):
+    ventas = Ventas.objects.all()
+    return render(request, 'inventario/ventas.html', {'ventas': ventas})
 
 def lista_productos(request):
     productos = Producto.objects.all()
@@ -20,8 +25,21 @@ def nuevo_producto(request):
         form = ProductoForm()
     return render(request, 'inventario/nuevo_producto.html', {'form': form})
 
+def venta_producto(request, id):
+    producto = get_object_or_404(Producto, id=id)
+    print(producto)
+    if request.method == 'POST':
+        ventas_form = VentasForm(request.POST, instance=producto)
+        if ventas_form.is_valid():
+            ventas_form.save()
+            return redirect('lista_ventas')
+    else:
+        ventas_form = VentasForm(instance=producto)
+    return render(request, 'inventario/vender_producto.html', {'ventas_form': ventas_form})
+
 def editar_producto(request, id):
     producto = get_object_or_404(Producto, id=id)
+    print(producto)
     if request.method == 'POST':
         form = ProductoForm(request.POST, instance=producto)
         if form.is_valid():
