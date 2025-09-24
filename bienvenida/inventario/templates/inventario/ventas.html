@@ -20,10 +20,10 @@
       {% for ventas in ventas %}
         <tr class= "text-center">
           <td class="py-2 px-4 border-b">{{ ventas.rut}}</td>
-          <td class="py-2 px-4 border-b">{{ ventas.producto}}</td>
-          <td class="py-2 px-4 border-b">{{ ventas.descripcion }}</td>
-          <td class="py-2 px-4 border-b">{{ ventas.precio }}</td>
-          <td class="py-2 px-4 border-b">{{ ventas.cantidad }}</td>
+          <td class="py-2 px-4 border-b">{{ ventas.producto.nombre}}</td>
+          <td class="py-2 px-4 border-b">{{ ventas.producto.descripcion }}</td>
+          <td class="py-2 px-4 border-b">{{ ventas.productos.precio }}</td>
+          <td class="py-2 px-4 border-b">{{ ventas.venta.cantidad }}</td>
         </tr>
       {% endfor %}
     </tbody>

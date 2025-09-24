@@ -1,10 +1,10 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
-from .models import Ventas
+from .models import Ventas, DetalleVenta
 from .forms import ProductoForm
 from .forms import VentasForm
 def lista_ventas(request):
-    ventas = Ventas.objects.all()
+    ventas = DetalleVenta.objects.all()
     return render(request, 'inventario/ventas.html', {'ventas': ventas})
 
 def lista_productos(request):
