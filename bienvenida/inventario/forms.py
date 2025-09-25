@@ -11,4 +11,3 @@ class VentasForm(forms.ModelForm):
     class Meta:
         model = Ventas
         fields = ['rut','cantidad']
-        label = {"rut":"rut cliente"}
