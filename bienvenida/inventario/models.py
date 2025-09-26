@@ -22,3 +22,12 @@ class DetalleVenta(models.Model):
 
     def __str__(self):
         return f"{self.cantidad} x {self.producto.nombre} en {self.venta}"
+    
+class Cliente(models.Model):
+    rut = models.CharField(max_length=13)
+    nombre = models.CharField(max_length=32)
+    correo = models.CharField(max_length=32)
+    telefono = models.DecimalField(max_digits=9 , decimal_places=0)
+ 
+
+

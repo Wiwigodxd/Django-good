@@ -1,8 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
-from .models import Ventas, DetalleVenta
+from .models import Cliente, Ventas, DetalleVenta
 from .forms import ProductoForm
 from .forms import VentasForm
+from .forms import ClienteForm
+
+def nuevo_cliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('nuevo_cliente')
+    else:
+        form = ClienteForm()
+    return render(request, 'inventario/cliente.html', {'cliente': Cliente})
+
+
+def lista_cliente(request):
+    cliente = Cliente.objects.all()
+    return render(request, 'inventario/lista_cliente.html', {'cliente': cliente})
 
 
 def lista_ventas(request):
@@ -79,3 +95,4 @@ def eliminar_producto(request, id):
         producto.delete()
         return redirect('lista_productos')
     return render(request, 'inventario/eliminar_producto.html', {'producto': producto})
+

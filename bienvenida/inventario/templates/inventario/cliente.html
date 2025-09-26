@@ -1,0 +1,23 @@
+{% extends 'inventario/base.html' %} {% block content %}
+<h1 class="text-2xl font-bold mb-4">Cliente</h1>
+<table class="min-w-full bg-white">
+  <thead>
+    <tr>
+      <th class="py-2 px-4 border-b">Rut cliente</th>
+      <th class="py-2 px-4 border-b">Nombre</th>
+      <th class="py-2 px-4 border-b">Correo</th>
+      <th class="py-2 px-4 border-b">Telefono</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cliente in cliente %}
+    <tr class="text-center">
+      <td class="py-2 px-4 border-b">{{ cliente.rut}}</td>
+      <td class="py-2 px-4 border-b">{{ cliente.nombre}}</td>
+      <td class="py-2 px-4 border-b">{{ cliente.correo }}</td>
+      <td class="py-2 px-4 border-b">{{ cliente.telefono }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
