@@ -1,19 +1,24 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto
-from .models import Cliente, Ventas, DetalleVenta
+from .models import Formulario, Cliente, Ventas, DetalleVenta
 from .forms import ProductoForm
 from .forms import VentasForm
 from .forms import ClienteForm
 
 def nuevo_cliente(request):
     if request.method == 'POST':
-        form = ClienteForm(request.POST)
+        form = Formulario(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('nuevo_cliente')
+            return redirect('formulario')
     else:
-        form = ClienteForm()
-    return render(request, 'inventario/cliente.html', {'cliente': Cliente})
+        form = Formulario()
+    return render(request, 'inventario/formulario.html', {'formulario': formulario})
+
+
+def nuevo_cliente(request):
+    cliente = Cliente.objects.all()
+    return render(request, 'inventario/cliente.html', {'cliente': cliente})
 
 
 def lista_cliente(request):

@@ -11,7 +11,7 @@ class Producto(models.Model):
 
 
 class Ventas(models.Model):
-    rut= models.CharField(max_length=13)
+    rut= models.CharField(max_length=10)
     cantidad = models.IntegerField(default=0)
 
 
@@ -24,10 +24,15 @@ class DetalleVenta(models.Model):
         return f"{self.cantidad} x {self.producto.nombre} en {self.venta}"
     
 class Cliente(models.Model):
-    rut = models.CharField(max_length=13)
+    rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=32)
     correo = models.CharField(max_length=32)
     telefono = models.DecimalField(max_digits=9 , decimal_places=0)
  
+class Formulario(models.Model):
+    rut = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=32)
+    correo = models.CharField(max_length=32)
+    telefono = models.DecimalField(max_digits=9 , decimal_places=0)
 
 
