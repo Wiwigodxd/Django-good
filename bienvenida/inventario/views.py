@@ -4,20 +4,21 @@ from .models import Formulario, Cliente, Ventas, DetalleVenta
 from .forms import ProductoForm
 from .forms import VentasForm
 from .forms import ClienteForm
+from .forms import FormularioForm
 
-def nuevo_cliente(request):
+def formulario_cliente(request):
     if request.method == 'POST':
-        form = Formulario(request.POST)
+        form = FormularioForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('formulario')
+            return redirect('lista_cliente')
     else:
-        form = Formulario()
-    return render(request, 'inventario/formulario.html', {'formulario': formulario})
+        form = FormularioForm()
+    return render(request, 'inventario/formulario.html', {'formulario': form})
 
 
 def nuevo_cliente(request):
-    cliente = Cliente.objects.all()
+    cliente = Formulario.objects.all()
     return render(request, 'inventario/cliente.html', {'cliente': cliente})
 
 

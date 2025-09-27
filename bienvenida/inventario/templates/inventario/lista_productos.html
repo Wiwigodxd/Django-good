@@ -6,6 +6,7 @@
 
 {% block content %}
   <h1 class="text-2xl font-bold mb-4">Lista de Productos</h1>
+    <a href="{% url 'formulario_cliente' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transiiton-all ease-in">Formulario Cliente</a>
     <a href="{% url 'lista_cliente' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transiiton-all ease-in">Cliente</a>
   <a href="{% url 'nuevo_producto' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transiiton-all ease-in">Nuevo Producto</a>
   <a href="{% url 'lista_ventas' %}" class="bg-green-500 text-white px-4 py-2 rounded mb-4 inline-block hover:scale-105 transiiton-all ease-in">Ver ventas</a>
