@@ -26,13 +26,13 @@ class DetalleVenta(models.Model):
 class Cliente(models.Model):
     rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=32)
-    correo = models.CharField(max_length=32)
+    correo = models.EmailField(unique=True)
     telefono = models.DecimalField(max_digits=9 , decimal_places=0)
  
 class Formulario(models.Model):
     rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=32)
-    correo = models.CharField(max_length=32)
+    correo = models.EmailField(unique=True)
     telefono = models.DecimalField(max_digits=9 , decimal_places=0)
 
 
