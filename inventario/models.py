@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import RegexValidator
 
 class Producto(models.Model):
     # Se agregó esta nueva fila como clave primaria para los productos que se van agregando - Clave autoincrementable
@@ -27,12 +27,17 @@ class Cliente(models.Model):
     rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=32)
     correo = models.EmailField(unique=True)
-    telefono = models.DecimalField(max_digits=9 , decimal_places=0)
- 
+    telefono = models.CharField(
+        max_length=9,
+        validators=[RegexValidator(regex=r'^\d{1,9}$', message='El teléfono debe contener solo dígitos (máx. 9).')]
+    )
+# ...existing code...
 class Formulario(models.Model):
     rut = models.CharField(max_length=10)
     nombre = models.CharField(max_length=32)
     correo = models.EmailField(unique=True)
-    telefono = models.DecimalField(max_digits=9 , decimal_places=0)
-
+    telefono = models.CharField(
+        max_length=9,
+        validators=[RegexValidator(regex=r'^\d{1,9}$', message='El teléfono debe contener solo dígitos (máx. 9).')]
+    )
 
