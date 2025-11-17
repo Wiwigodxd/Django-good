@@ -5,6 +5,7 @@ from .forms import ProductoForm
 from .forms import VentasForm
 from .forms import ClienteForm
 from .forms import FormularioForm
+from django.contrib.auth.decorators import login_required
 
 def formulario_cliente(request):
     if request.method == 'POST':
@@ -32,6 +33,7 @@ def lista_ventas(request):
     return render(request, 'inventario/ventas.html', {'ventas': ventas})
 
 
+@login_required
 def lista_productos(request):
     productos = Producto.objects.all()
     return render(request, 'inventario/lista_productos.html', {'productos': productos})
