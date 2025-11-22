@@ -60,8 +60,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'bienvenida',
-    'inventario'
+    'inventario',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -99,15 +105,10 @@ WSGI_APPLICATION = 'bienvenida.wsgi.application'
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("dbname"),
-        "USER": os.getenv("user"),
-        "PASSWORD": os.getenv("password"),
-        "HOST": os.getenv("host"),
-        "PORT": os.getenv("port"),
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.sqlite3",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

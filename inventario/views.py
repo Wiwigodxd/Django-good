@@ -6,6 +6,22 @@ from .forms import VentasForm
 from .forms import ClienteForm
 from .forms import FormularioForm
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group, User
+from rest_framework import permissions, viewsets
+from serializers import GroupSerializer, UserSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all().order_by("-date_joined")
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all().order_by("name")
+    serializer_class = GroupSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+
 
 def formulario_cliente(request):
     if request.method == 'POST':
