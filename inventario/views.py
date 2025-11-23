@@ -8,7 +8,32 @@ from .forms import FormularioForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
-from serializers import GroupSerializer, UserSerializer
+from serializers import GroupSerializer, UserSerializer, ProductoSerializer, VentasSerializer, DetalleVentaSerializer, ClienteSerializer, FormularioSerializer
+
+class ProductoViewSet(viewsets.ModelViewSet):
+    queryset = Producto.objects.all().order_by("nombre")
+    serializer_class = ProductoSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class VentasViewSet(viewsets.ModelViewSet):
+    queryset = Ventas.objects.all().order_by("rut")
+    serializer_class = VentasSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class DetalleVentaViewSet(viewsets.ModelViewSet):
+    queryset = DetalleVenta.objects.all().order_by("venta")
+    serializer_class = DetalleVentaSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all().order_by("nombre")
+    serializer_class = ClienteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class FormularioViewSet(viewsets.ModelViewSet):
+    queryset = Formulario.objects.all().order_by("nombre")
+    serializer_class = FormularioSerializer
+    permission_classes = [permissions.IsAuthenticated]
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all().order_by("-date_joined")
