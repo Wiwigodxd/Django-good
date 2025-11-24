@@ -9,7 +9,3 @@ def lista_productos(request):
 def inicio(request):
      return HttpResponse("Hola causas que lo que 👻🤑")
 
-class ProductoViewSet(viewsets.ModelViewSet):
-    queryset = Producto.objects.all().order_by("nombre")
-    serializer_class = ProductoSerializer
-    permission_classes = [permissions.IsAuthenticated]  # ahora exige JWT para API

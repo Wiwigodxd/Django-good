@@ -5,3 +5,5 @@ python-dotenv
 psycopg2
 whitenoise
 djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
