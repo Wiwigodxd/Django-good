@@ -23,9 +23,7 @@ def whoami(request):
     })
 
 
-# ===========================================================
-# DECORADOR: SOLO SUPERUSUARIO (y debe estar logueado)
-# ===========================================================
+
 def superuser_required(view_func):
     decorated_view = login_required(
         user_passes_test(lambda u: u.is_superuser)(view_func)
@@ -33,9 +31,7 @@ def superuser_required(view_func):
     return decorated_view
 
 
-# ===========================================================
-# API REST (requiere token y login)
-# ===========================================================
+
 class ProductoViewSet(viewsets.ModelViewSet):
     queryset = Producto.objects.all().order_by("nombre")
     serializer_class = ProductoSerializer
@@ -72,9 +68,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
 
 
-# ===========================================================
-# VISTAS HTML – SOLO SUPERUSUARIO
-# ===========================================================
+
 
 @superuser_required
 def formulario_cliente(request):

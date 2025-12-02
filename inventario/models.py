@@ -1,5 +1,6 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django.contrib.auth.models import User
 
 class Producto(models.Model):
     # Se agregó esta nueva fila como clave primaria para los productos que se van agregando - Clave autoincrementable
@@ -41,3 +42,9 @@ class Formulario(models.Model):
         validators=[RegexValidator(regex=r'^\d{1,9}$', message='El teléfono debe contener solo dígitos (máx. 9).')]
     )
 
+class InicioSesion(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE)
+    fecha = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.usuario.username} - {self.fecha}"

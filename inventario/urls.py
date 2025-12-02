@@ -2,10 +2,9 @@ from django.urls import path, include
 from . import views
 from rest_framework import routers
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from inventario.views_dashboard import dashboard_data
 
-# -------------------------
-# API ROUTER BAJO /api/
-# -------------------------
+
 router = routers.DefaultRouter()
 router.register(r"users", views.UserViewSet)
 router.register(r"groups", views.GroupViewSet)
@@ -16,15 +15,15 @@ router.register(r"clientes", views.ClienteViewSet)
 router.register(r"formularios", views.FormularioViewSet)
 
 urlpatterns = [
-    # JWT
+
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # API
+   
     path("api/", include(router.urls)),
     path("api-auth/", include("rest_framework.urls", namespace="rest_framework")),
 
-    # HTML views (sin conflictos)
+ 
     path("", views.lista_productos, name="lista_productos"),
     path("producto/<int:id>/", views.detalle_producto, name="detalle_producto"),
     path("producto/nuevo/", views.nuevo_producto, name="nuevo_producto"),
@@ -36,6 +35,6 @@ urlpatterns = [
     path("cliente/", views.lista_cliente, name="lista_cliente"),
     path("cliente/nuevo/", views.formulario_cliente, name="formulario_cliente"),
     path("api/whoami/", views.whoami, name="whoami"),
-
+    path("api/dashboard/", dashboard_data),
 
 ]
